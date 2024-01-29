@@ -3,6 +3,10 @@ body {
   font-size: 16px;
 }
 
+header {
+  text-align: center;
+}
+
 textarea {
   background: transparent;
   border: none;
@@ -56,4 +60,28 @@ textarea {
 .saveBtn i:hover {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
+}
+
+@media (max-width: 450px) {
+  body {
+    font-size: 12px;
+  }
+
+  .headerLayout {
+    padding: 10px !important;
+    margin-bottom: 0 !important;
+  }
+
+  .hoursLayout {
+    margin-left: 0 !important;
+    margin-right: 1px !important;
+
+  }
+
+  .hour {
+    padding: 0 !important;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
 }
