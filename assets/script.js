@@ -130,7 +130,60 @@ $(function () {
     fivePM.classList.add('future');
   }
 
-  
+  /*var saveBtns = document.querySelectorAll('.btn');
+  saveBtns.forEach(function(saveBtn) {
+  saveBtn.addEventListener('click', saveToLS);
+});
+
+  function saveToLS () {
+    var inputText = document.querySelectorAll('textarea').values;
+
+    var data = {
+      text: inputText
+    };
+
+    var dataString = JSON.stringify(data);
+
+    localStorage.setItem('savedText', dataString);
+
+    console.log(localStorage);
+    displayText();
+  }*/
+
+  var LSAddedText = document.querySelector('.hide');
+
+  function displayText (){
+      LSAddedText.classList.remove('hide');
+  }
+
+
+  var saveBtns = document.querySelectorAll('.btn');
+  var textarea = document.querySelector('textarea');
+
+  saveBtns.forEach(function(saveBtn) {
+  saveBtn.addEventListener('click', saveToLS);
+  });
+
+// Check if there is any saved text in localStorage when the page loads
+  window.addEventListener('load', function() {
+  var savedText = localStorage.getItem('savedText');
+  if (savedText) {
+    var data = JSON.parse(savedText);
+    textarea.value = data.text;
+  }
+  });
+
+  function saveToLS() {
+    var inputText = textarea.value;
+    var data = {
+      text: inputText
+    };
+    var dataString = JSON.stringify(data);
+    localStorage.setItem('savedText', dataString);
+    console.log(localStorage);
+    displayText();
+  }
+
 
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
